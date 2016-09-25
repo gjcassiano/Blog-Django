@@ -1,0 +1,41 @@
+<!-- Button trigger modal -->
+<script type="text/javascript">
+
+  function show_btn(){
+    $('#myModal').modal('show');
+  
+  }
+  
+</script>
+
+
+
+<div class=" modal fade" id="loguin-form" role="dialog">
+  <div class="modal-dialog">
+  {% block content %}
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+
+        <form method="post" action='/blog/' name="login_form">
+        {% csrf_token %}
+              <input type="text" class="form-control" name="username" id="username" placeholder="Username"><br>
+              <input type="password" class="form-control" name="passwd" id="passwd" placeholder="Password">
+              <button type="submit" class="btn btn-custom btn-lg btn-block" >entrar</button>
+              
+        </form>
+      </div>
+      
+    </div>
+    {% endblock %}
+    
+  </div>
+
+</div>
+
+  <a type="button" class="btn btn-primary btn-sm 1  btn-loguin-page" data-toggle="modal"  data-target="#loguin-form">Loguin</a>
+

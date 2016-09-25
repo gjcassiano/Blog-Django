@@ -1,0 +1,133 @@
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  
+<style type="text/css">
+	
+	span.glyphicon {
+    font-size: 10.2em;}
+    .top-page { margin-top:40px; }
+    .head-page{
+    	
+    	letter-spacing: 3px;
+    	background:#1E90FF; 
+    	border-bottom:solid; 
+    	border-width:1px;
+    	height: 160px;
+    }
+    .titulo-page{
+    	color: #FFFFFF;
+    }
+    .titulo-post-page{
+		color: #1E90FF;
+		font-size: 20px;
+		
+    }
+    a:link {
+		text-decoration: none;
+		transition: all 0.3s ease;
+	}
+	a:hover {
+	    color: red;
+		text-decoration: none;
+	}
+    .titulo-post-page:a{
+		color: #1E90FF;
+		font-size: 20px;
+		
+    }
+    .btn-loguin-page{
+    	margin-bottom: 4px;
+
+    	display: block;
+    	background:#1E90FF; 
+    }
+    .btn-pagina-principal{
+    	margin-bottom: 10px;
+    	
+    	display: block;
+    	background:#1E90FF; 
+    }
+
+</style>
+
+
+
+<div  class="jumbotron head-page">
+	<div class="container titulo-page">
+	    <h2>Notícias do mercado de trabalho ?</h2>
+	    <p>veja aqui as principais do dia</p>
+ 	</div>
+
+
+  
+
+
+
+</div>
+
+
+<div class="row top-page">
+  <div class="col-sm-2">
+  <a type="button" href="/blog/" class="btn btn-primary btn-sm 1   btn-pagina-principal" >Pagina principal</a>
+	{% include "login.html" %}
+
+  	<div class="panel panel-default">
+	  	<div class="panel-heading">
+		  	<div class="panel-title">
+			  	<img class="img-thumbnail img-responsive"
+			     src="https://avatars.githubusercontent.com/gjcassiano" alt="" />
+
+			</div>
+		</div>
+		<div class="panel-body">
+			{%block content%}
+			{% if user != None%}
+				<h4>{{user}}</h4>
+			{% endif %}
+			{%endblock%}
+			<p>I'm Giovani and study Computer engineering from Inatel 'Instituto nacional de telecomunicações'</p>
+			
+
+		</div>
+
+	</div>
+
+  </div>
+  
+
+ 
+  	<div class="content container bg-grey col-md-9">
+	    <div class="row">
+	        <div class="">
+	        	{% if posts_list %}
+		           {% for post in posts_list %}
+		           		
+		                <div class="panel panel-default">
+		                   	<div class="panel-heading">
+		                    	<strong class="panel-title titulo-post-page">	<a href="/blog/post_{{ post.post_id}}/">{{ post.title}}</a></strong>
+
+		                    
+		                   	<i class = "icon-time pull-right">{{ post.date }}</i>
+						 	</div>
+		                    <div class="panel-body">
+		                    	<p class=" ">{{ post.texto|linebreaksbr }}</p>
+		                    </div>
+		                </div>
+		                <hr class="divider"></hr>
+		            {% endfor %}
+		       	{% else %}
+		       		<div class="post">
+		       			<h1>Nenhum post encontrado</h1>
+		       		</div>
+	        	{% endif%}
+	        </div>
+	    </div>
+	</div>
+
+  
+</div>
