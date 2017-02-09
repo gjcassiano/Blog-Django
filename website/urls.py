@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^blog/post_(?P<num>[0-9]+)/', include('blog.urls')),
     url(r'^blog/login', include('blog.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^formulario/',include('blog.urls')),
+    #url(r'^formulario/',include('blog.urls')),
    
 
 ]

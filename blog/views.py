@@ -3,11 +3,8 @@ from django.http import HttpResponse
 from blog.models import Comentario,Post
 from django.contrib.auth import authenticate, login, logout
 
-username = 'anyboy'
+username = 'someone'
 password = ''
-
-def index(request):
-	return HttpResponse("Hello, world. You're at the polls index." )
 
 def formulario_buscar(request):
 	return render(request, 'formulario_buscar.html')	
@@ -39,7 +36,8 @@ def posts(request,num = -1):
 	if num <= 0:
 		posts_list = Post.objects.order_by('-post_id')[:5]
 		for post in posts_list:
-			post.texto = post.texto[:120] + "..."
+			if len(post.texto) >120:
+				post.texto = post.texto[:120] + "..."
 	else:
 		try:
 			posts_list = Post.objects.filter(post_id=num)
@@ -57,11 +55,4 @@ def posts(request,num = -1):
 def login(request):
 	return render(request,'login.html')
 
-
-def detail(request, c_nome):
-    try:
-        comentario = Comentario.objects.get(pk=c_nome)
-    except Comentario.DoesNotExist:
-        raise Http404("Comentario does not exist")
-    return render(request, 'blog/detail.html', {'comentario': comentario})
 
