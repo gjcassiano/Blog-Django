@@ -5,5 +5,4 @@ Blog desenvolvido apartir do framework Django, na qual pode ser usado para proje
 #Objetivo:
 Esse Blog tem o principal objetivo de deixar os visitantes informados sobre tudo que acontece no mercado de trabalho.
 
-By Jovas v0.2
-
+By Jovas v0.3
